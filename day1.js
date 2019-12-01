@@ -111,14 +111,9 @@ const modulesWeight = [
 FuelNeeded = () => {
 	total = 0;
 	modulesWeight.map(module => {
-		const cutByThree = module / 3;
-		const roundedDown = Math.floor(cutByThree);
-		const dropTwo = roundedDown - 2;
-		total = dropTwo + total;
+		total = Math.floor(module / 3) - 2 + total;
 	});
 	return total;
 };
 
-FuelNeeded();
-
-// Part Two
+console.log(FuelNeeded());
