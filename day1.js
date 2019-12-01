@@ -117,3 +117,40 @@ FuelNeeded = () => {
 };
 
 console.log(FuelNeeded());
+
+// Part Two
+
+// The fuel needs fuel
+// Run the same equation before but adding in the fuel weight for each module
+
+fuelArray = [];
+
+totalFuel = () => {
+	total = 0;
+	modulesWeight.map(module => {
+		const fuelWeight = Math.floor(module / 3) - 2;
+		fuelArray.push(fuelWeight);
+		fuelForFuel(fuelWeight);
+	});
+	return console.log(total);
+};
+
+fuelForFuel = fuel => {
+	if (fuel >= 2) {
+		const fuelWeight = Math.floor(fuel / 3) - 2;
+		if (fuelWeight >= 0) {
+			fuelArray.push(fuelWeight);
+		}
+		return fuelForFuel(fuelWeight);
+	}
+	return fuelPerModule();
+};
+
+fuelPerModule = () => {
+	fuelArray.map(fuel => {
+		total = fuel + total;
+	});
+	return (fuelArray = []);
+};
+
+totalFuel();
