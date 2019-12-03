@@ -139,7 +139,6 @@ array = [
 ];
 
 intcode = array => {
-	var total = 0;
 	for (var i = 0; i < array.length; i = i + 4) {
 		const firstNumber = array[i];
 		const first = array[i + 1];
@@ -151,10 +150,10 @@ intcode = array => {
 		} else if (firstNumber === 2) {
 			array[third] = array[first] * array[second];
 		} else if (firstNumber === 99) {
-			total += array[0];
+			array[0];
 		}
 	}
-	return total;
+	return array[0];
 };
 
 // Part 2
