@@ -139,27 +139,23 @@ array = [
 ];
 
 intcode = array => {
+	var total = 0;
 	for (var i = 0; i < array.length; i = i + 4) {
-		gravityEquation(i, array);
+		const firstNumber = array[i];
+		const first = array[i + 1];
+		const second = array[i + 2];
+		const third = array[i + 3];
+
+		if (firstNumber === 1) {
+			array[third] = array[first] + array[second];
+		} else if (firstNumber === 2) {
+			array[third] = array[first] * array[second];
+		} else if (firstNumber === 99) {
+			total += array[0];
+		}
 	}
+	return total;
 };
-
-gravityEquation = (i, array) => {
-	const firstNumber = array[i];
-	const first = array[i + 1];
-	const second = array[i + 2];
-	const third = array[i + 3];
-
-	if (firstNumber === 1) {
-		array[third] = array[first] + array[second];
-	} else if (firstNumber === 2) {
-		array[third] = array[first] * array[second];
-	} else if (firstNumber === 99) {
-		array[0];
-	}
-};
-
-console.log(intcode(array));
 
 // Part 2
 
@@ -173,7 +169,10 @@ betterArray = (n, v) => {
 gravityAssist = () => {
 	for (let n = 0; n < 100; n++) {
 		for (let v = 0; v < 100; v++) {
-			intcode(betterArray(n, v));
+			if (intcode(betterArray(n, v)) === 19690720) {
+				console.log(100 * n + v);
+				break;
+			}
 		}
 	}
 };
