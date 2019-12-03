@@ -138,13 +138,13 @@ array = [
 	0
 ];
 
-intcode = () => {
+intcode = array => {
 	for (var i = 0; i < array.length; i = i + 4) {
-		gettingEquation(i);
+		gravityEquation(i, array);
 	}
 };
 
-gettingEquation = i => {
+gravityEquation = (i, array) => {
 	const firstNumber = array[i];
 	const first = array[i + 1];
 	const second = array[i + 2];
@@ -155,10 +155,27 @@ gettingEquation = i => {
 	} else if (firstNumber === 2) {
 		array[third] = array[first] * array[second];
 	} else if (firstNumber === 99) {
-		console.log(array[0]);
+		array[0];
 	}
 };
 
-intcode();
+console.log(intcode(array));
 
 // Part 2
+
+betterArray = (n, v) => {
+	const adjustedArray = array.map(x => x);
+	adjustedArray[1] = n;
+	adjustedArray[2] = v;
+	return adjustedArray;
+};
+
+gravityAssist = () => {
+	for (let n = 0; n < 100; n++) {
+		for (let v = 0; v < 100; v++) {
+			intcode(betterArray(n, v));
+		}
+	}
+};
+
+gravityAssist();
