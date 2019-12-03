@@ -145,33 +145,20 @@ intcode = () => {
 };
 
 gettingEquation = i => {
-	var firstNumber = array[i];
-	if (array[0] === 19690720) {
-		return console.log('Completed');
-	}
+	const firstNumber = array[i];
+	const first = array[i + 1];
+	const second = array[i + 2];
+	const third = array[i + 3];
+
 	if (firstNumber === 1) {
-		addingNumbers(i);
+		array[third] = array[first] + array[second];
 	} else if (firstNumber === 2) {
-		multiplyNumbers(i);
+		array[third] = array[first] * array[second];
 	} else if (firstNumber === 99) {
 		console.log(array[0]);
 	}
 };
 
-addingNumbers = i => {
-	const first = array[i + 1];
-	const second = array[i + 2];
-	const third = array[i + 3];
-	const sum = array[first] + array[second];
-	array[third] = sum;
-};
-
-multiplyNumbers = i => {
-	const first = array[i + 1];
-	const second = array[i + 2];
-	const third = array[i + 3];
-	const multiple = array[first] * array[second];
-	array[third] = multiple;
-};
-
 intcode();
+
+// Part 2
