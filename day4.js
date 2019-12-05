@@ -21,7 +21,6 @@ matchingAdjacentNumber = array => {
 			}
 		}
 	}
-	return false;
 };
 
 neverDecrease = array => {
